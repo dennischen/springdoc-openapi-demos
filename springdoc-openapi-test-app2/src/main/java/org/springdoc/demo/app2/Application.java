@@ -11,6 +11,7 @@ import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.info.License;
 import io.swagger.v3.oas.models.security.SecurityScheme;
+import io.swagger.v3.oas.models.security.SecurityScheme.In;
 
 @SpringBootApplication
 @ComponentScan(basePackages = { "org.springdoc.demo.app2" })
@@ -23,8 +24,8 @@ public class Application {
 	@Bean
 	public OpenAPI customOpenAPI(@Value("${springdoc.version}") String appVersion) {
 		return new OpenAPI()
-				.components(new Components().addSecuritySchemes("basicScheme",
-						new SecurityScheme().type(SecurityScheme.Type.HTTP).scheme("basic")))
+				.components(new Components().addSecuritySchemes("XSPACE_TOKEN",
+						new SecurityScheme().type(SecurityScheme.Type.APIKEY).name("Auth_Token").in(In.HEADER)))
 				.info(new Info().title("Petstore API").version(appVersion).description(
 						"This is a sample server Petstore server.  You can find out more about     Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).      For this sample, you can use the api key `special-key` to test the authorization     filters.")
 						.termsOfService("http://swagger.io/terms/")

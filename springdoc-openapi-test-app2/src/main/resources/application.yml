@@ -22,7 +22,7 @@ spring:
           paths: /webjars/swagger-ui/**.*
 springdoc:
   api-docs:
-    path: /v3/api-docs
+    path: /api/definition.json
   swagger-ui:
-    path: /swagger-ui.html
+    path: /api/ui.html
   version: '@springdoc.version@'
